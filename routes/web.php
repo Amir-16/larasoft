@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 //Route::get('about/{v}/{contact}', function ($vq,$c) {
   //  $name='Amir';
-    //return view('about', ['myname'=>$name,'q'=>$vq,'contact'=>$c]); 
+    //return view('about', ['myname'=>$name,'q'=>$vq,'contact'=>$c]);
 
     //key=>value pair
 //});
@@ -27,3 +27,5 @@ Route::get('employees','EmployeeController@all');
 Route::get('edit-employee/{id}','EmployeeController@edit');
 
 Route::post('update-employee/{id}','EmployeeController@update');
+
+Route::get('delete-employee/{id}','EmployeeController@delete');

@@ -77,4 +77,11 @@ class EmployeeController extends Controller
  
 
     }
+
+    public function delete($id){
+
+        $emp =Employee::find($id);
+        $emp->delete();
+        return redirect()->back()->with('success','delete successfully');
+    }
 }

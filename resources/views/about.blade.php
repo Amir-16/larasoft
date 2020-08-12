@@ -19,7 +19,10 @@
 
             <p>This is about us page</p>
         <p>Name is:{{$myname}}</p>
+
         <p>query value is:{{$q}}</p>
+
+        <p>contact no is:{{ $contact }}</p>
 
         </div>
 

@@ -22,11 +22,20 @@ class EmployeeController extends Controller
 
     public function  store(Request $req) {
 
+        $validatedData = $req->validate([
+            'name'=> 'required|max:100',
+            'email' => 'required|email|unique:employees,email', //check email column & unique email id
+            'gender'=>'required',
+            'dob'=>'required|date|before:03/09/2020',
+            'salary' =>' required|integer|between:10000,50000'
+        ]);
+
         $name =$req->name;
         $email=$req->email;
         $gender=$req->gender;
         $gender=$req->gender;
         $salary=$req->salary;
+        $dob=$req->dob;
         $description=$req->description;
 
         $obj = new Employee();
@@ -34,6 +43,7 @@ class EmployeeController extends Controller
         $obj->email=$email;
         $obj->gender=$gender;
         $obj->salary=$salary;
+        $dob=$req->dob;
         $obj->description=$description;
 
         if($obj->save()){
@@ -74,7 +84,7 @@ class EmployeeController extends Controller
 
             return redirect()->back()->with('success','Updated successfully');
          }
- 
+
 
     }
 

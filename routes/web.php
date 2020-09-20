@@ -58,3 +58,8 @@ Route::get('/dashboard/index', function () {
 //show seeder file
 
 Route::get('students','StudentController@all');
+
+//upload Image
+
+Route::get('upload','UploadController@index');
+Route::post('storeimage','UploadController@store');

@@ -11,7 +11,8 @@ class UploadController extends Controller
 {
     public function index(){
 
-        return view('upload');
+        $images= ImageModel::all(); //select * from image_models
+        return view('upload',['images'=>$images]);
     }
     public function store(Request $request){
 
@@ -19,9 +20,16 @@ class UploadController extends Controller
         {
              $originalImage      = $request->file('picture');
                  $imageName          = $this->uploadImage($originalImage);
+                 $obj = new ImageModel();
+                 $obj->filename= $imageName;
+                 if($obj->save()){
+
+                    return redirect()->back()->with('msg','Successfully uploaded');
+                 }
+
           //  $applicant->picture = $imageName;
          }
-        
+
     }
     private function uploadImage($originalImage)
 {
@@ -32,11 +40,11 @@ class UploadController extends Controller
         $ext             = end($ext2);
         $imageName       = time().'.'.$ext;
         // local
-         $path            = public_path().'/uploads/'; 
+         $path            = public_path().'/uploads/';
         // deployment
         // $path          = base_path().'/../'.'uploads/';
-        
-        $profileImage->save($path.$imageName);
+
+        $profileImage->save($path.$imageName); //upload in a folder
         return $imageName;
  }
 

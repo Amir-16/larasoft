@@ -43,7 +43,7 @@
             </tbody>
         </table>
     </div>
-    /
+    
     <script>
         //show datable in DaaTable Style
        $(document).ready(function() {

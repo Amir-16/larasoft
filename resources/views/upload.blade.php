@@ -9,6 +9,13 @@
 <body>
     <div>
         <h2>Upload Image using Intervention</h2>
+
+        @if(Session::has('msg'))
+    <div>{{Session::get('msg')}}</div>
+
+        @endif
+        
+
         <div>
         <form method="post" action="{{URL::to('storeimage')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -22,6 +29,17 @@
 
         
         </div>
+        @foreach($images as $img)
+        <div>
+            <div style="padding:5px">
+            <img src="{{$img ->filename}}" alt="" />
+
+            </div>
+
+
+
+        </div>
+
     </div>
 
 </body>
